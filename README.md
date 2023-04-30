@@ -10,7 +10,7 @@
 
 This is the only publicly available headshot accuracy broadcaster other than [Poosh]'s [ScrnBalance], but has a different implementation thanks to [Unflect]. Other private versions are directly ripped from ScrN and are too good to be used by us peasants.
 
-All available variables can be found in [config file](Configs/AccuracyBroadcaster.ini), feel free to modify the accuracy message by your taste!
+All available variables can be found in [config file](Configs/AccuracyBroadcaster.ini), feel free to modify the accuracy message by your taste! And spam `mutate acc / accuracy` to enjoy yourself at any time.
 
 ## Installation
 
