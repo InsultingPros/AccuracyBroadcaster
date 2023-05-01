@@ -104,7 +104,7 @@ event Timer() {
 private final static function AddPlayerRecord(string HASH, string NAME) {
     local sPlayerRecord sPlayerRecord;
 
-    warn("creating new record: name=" $ NAME $ ", hash=" $ HASH);
+    // warn("creating new record: name=" $ NAME $ ", hash=" $ HASH);
     sPlayerRecord.Hash = HASH;
     sPlayerRecord.NAME = NAME;
     default.PlayerRecord[default.PlayerRecord.length] = sPlayerRecord;
