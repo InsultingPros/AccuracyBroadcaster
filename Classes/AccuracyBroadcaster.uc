@@ -41,6 +41,7 @@ event PreBeginPlay() {
         return;
     }
 
+    UtilityTextRef.mutname = class.outer.Name;
     HookMonsterTakeDamage();
     // pre color this message
     cachedAccuracyMessage = class'UtilityColor'.static.ParseTags(accuracyMessage);
@@ -265,13 +266,12 @@ function Mutate(string MutateString, PlayerController sender) {
     }
 
     if (command ~= "HELP" || command ~= "HLP" || command ~= "HALP") {
-        UtilityTextRef.PrintHelp(sender, self);
+        UtilityTextRef.PrintHelp(sender);
         return;
     } else if (command ~= "accuracy" || command ~= "acc") {
         if (sender.PlayerReplicationInfo.bOnlySpectator) {
             UtilityTextRef.SendMessage(
                 sender,
-                self,
                 "^w^You are a spectator, not allowed to use this command!"
             );
             return;
@@ -284,7 +284,7 @@ function Mutate(string MutateString, PlayerController sender) {
         );
         return;
     } else if (command ~= "credits") {
-        UtilityTextRef.PrintCredits(sender, self);
+        UtilityTextRef.PrintCredits(sender);
     }
 }
 

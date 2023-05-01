@@ -5,6 +5,7 @@
 class UtilityText extends Object
     dependson(AccuracyBroadcaster);
 
+var public transient name mutName;
 // `const`s just to make variable check faster
 const PNAME="%NAME%";
 // wave
@@ -89,11 +90,11 @@ public final function string InsertVariables(
     return cachedAccuracyMessage;
 }
 
-public final function PrintHelp(PlayerController pc, AccuracyBroadcaster mut) {
-    SendMessage(pc, mut, "^r^" $ mut.class.outer.Name $ " ^w^helper:");
-    SendMessage(pc, mut, "^w^> Available mutate commands:");
-    SendMessage(pc, mut, "    ^w^> ^y^acc / accuracy ^w^- print player accuracy stats.");
-    SendMessage(pc, mut, "    ^w^> ^y^credits ^w^- who made this shit.");
+public final function PrintHelp(PlayerController pc) {
+    SendMessage(pc, "^r^" $ mutName $ " ^w^helper:");
+    SendMessage(pc, "^w^> Available mutate commands:");
+    SendMessage(pc, "    ^w^> ^y^acc / accuracy ^w^- print player accuracy stats.");
+    SendMessage(pc, "    ^w^> ^y^credits ^w^- who made this shit.");
 }
 
 public final function PrintPlayerStats(
@@ -101,27 +102,27 @@ public final function PrintPlayerStats(
     AccuracyBroadcaster mut,
     AccuracyBroadcaster.sPlayerRecord sPlayerRecord
 ) {
-    SendMessage(pc, mut, "^w^Your accuracy stats:");
-    SendMessage(pc, mut, "    Wave accuracy: ^y^" $ int((float(sPlayerRecord.headshotsWave) /
+    SendMessage(pc, "^w^Your accuracy stats:");
+    SendMessage(pc, "    Wave accuracy: ^y^" $ int((float(sPlayerRecord.headshotsWave) /
         float(sPlayerRecord.bodyshotsWave + sPlayerRecord.headshotsWave)) * 100) $ "%");
-    SendMessage(pc, mut, "    Game accuracy: ^y^" $ int((float(sPlayerRecord.headshotsGame) /
+    SendMessage(pc, "    Game accuracy: ^y^" $ int((float(sPlayerRecord.headshotsGame) /
         float(sPlayerRecord.bodyshotsGame + sPlayerRecord.headshotsGame)) * 100) $ "%");
-    SendMessage(pc, mut, "    Wave headshots: ^y^" $ sPlayerRecord.headshotsWave);
-    SendMessage(pc, mut, "    Game headshots: ^y^" $ sPlayerRecord.headshotsGame);
-    SendMessage(pc, mut, "    Wave bodyshots: ^y^" $ sPlayerRecord.bodyshotsWave);
-    SendMessage(pc, mut, "    Game bodyshots: ^y^" $ sPlayerRecord.bodyshotsGame);
-    SendMessage(pc, mut, "    Current headshot streak: ^y^" $ sPlayerRecord.headshotsCurrentStreak);
-    SendMessage(pc, mut, "    Current bodyshot streak: ^y^" $ sPlayerRecord.bodyshotsCurrentStreak);
-    SendMessage(pc, mut, "    Best headshot streak: ^y^" $ sPlayerRecord.headshotsStreak);
-    SendMessage(pc, mut, "    Best bodyshot streak: ^y^" $ sPlayerRecord.bodyshotsStreak);
+    SendMessage(pc, "    Wave headshots: ^y^" $ sPlayerRecord.headshotsWave);
+    SendMessage(pc, "    Game headshots: ^y^" $ sPlayerRecord.headshotsGame);
+    SendMessage(pc, "    Wave bodyshots: ^y^" $ sPlayerRecord.bodyshotsWave);
+    SendMessage(pc, "    Game bodyshots: ^y^" $ sPlayerRecord.bodyshotsGame);
+    SendMessage(pc, "    Current headshot streak: ^y^" $ sPlayerRecord.headshotsCurrentStreak);
+    SendMessage(pc, "    Current bodyshot streak: ^y^" $ sPlayerRecord.bodyshotsCurrentStreak);
+    SendMessage(pc, "    Best headshot streak: ^y^" $ sPlayerRecord.headshotsStreak);
+    SendMessage(pc, "    Best bodyshot streak: ^y^" $ sPlayerRecord.bodyshotsStreak);
 }
 
-public final function PrintCredits(PlayerController pc, AccuracyBroadcaster mut) {
-    SendMessage(pc, mut, "^r^" $ mut.class.outer.Name);
-    SendMessage(pc, mut, "^w^> Author: ^b^NikC-");
-    SendMessage(pc, mut, "^w^> Home Repo: github.com/InsultingPros/AccuracyBroadcaster");
+public final function PrintCredits(PlayerController pc) {
+    SendMessage(pc, "^r^" $ mutName);
+    SendMessage(pc, "^w^> Author: ^b^NikC-");
+    SendMessage(pc, "^w^> Home Repo: github.com/InsultingPros/AccuracyBroadcaster");
 }
 
-public final function SendMessage(PlayerController pc, AccuracyBroadcaster mut, coerce string text) {
-    pc.teamMessage(none, class'UtilityColor'.static.ParseTags(text), mut.class.outer.Name);
+public final function SendMessage(PlayerController pc, coerce string text) {
+    pc.teamMessage(none, class'UtilityColor'.static.ParseTags(text), mutName);
 }
