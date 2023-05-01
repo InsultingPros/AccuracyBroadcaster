@@ -37,6 +37,8 @@ event PreBeginPlay() {
     KFGT = KFGameType(level.game);
     if (KFGT == none) {
         warn("KFGameType is not found. Terminating!");
+        // cleanup nothing if we even fail to spawn
+        bCleanedUp = true;
         Destroy();
         return;
     }
