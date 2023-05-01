@@ -207,7 +207,7 @@ private final function BroadcastText(string message) {
         pc = PlayerController(C);
         // this is the WebAdmin, send clean text to him
         if (c.IsA('MessagingSpectator')) {
-            pc.teamMessage(none, message, class.outer.Name);
+            pc.teamMessage(none, class'UtilityColor'.static.StripColor(message), class.outer.Name);
             continue;
         } else {
             pc.teamMessage(none, message, class.outer.Name);
